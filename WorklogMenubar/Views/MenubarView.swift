@@ -19,42 +19,67 @@ struct MenubarView: View {
             Divider()
             footer
         }
-        .frame(width: 380)
-        .onAppear {
-            appState.initializeIfNeeded()
-        }
+        .frame(width: 400)
     }
 
+    // MARK: - Header
+
     private var header: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
                 Text("Worklog")
                     .font(.headline)
-                if let lastRefresh = appState.lastRefresh {
-                    Text("Updated \(lastRefresh, style: .relative) ago")
-                        .font(.caption2)
-                        .foregroundStyle(.secondary)
+                Spacer()
+                Picker("", selection: $appState.period) {
+                    Text("Today").tag("today")
+                    Text("Yesterday").tag("yesterday")
+                    Text("This Week").tag("week")
+                    Text("Last 7 Days").tag("7d")
                 }
-            }
-            Spacer()
-            PeriodPicker(selection: $appState.period)
+                .pickerStyle(.menu)
+                .frame(width: 110)
                 .onChange(of: appState.period) {
                     appState.refresh()
                 }
+            }
+            HStack(spacing: 4) {
+                if appState.isLoading && !appState.projects.isEmpty {
+                    ProgressView()
+                        .controlSize(.mini)
+                    Text("Refreshing...")
+                        .font(.caption)
+                        .foregroundStyle(.tertiary)
+                } else {
+                    Text("\(appState.totalCommits) commits")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    if let lastRefresh = appState.lastRefresh {
+                        Text("·")
+                            .font(.caption)
+                            .foregroundStyle(.quaternary)
+                        Text("Updated \(lastRefresh, style: .relative) ago")
+                            .font(.caption)
+                            .foregroundStyle(.tertiary)
+                    }
+                }
+            }
+            .animation(.easeInOut(duration: 0.2), value: appState.isLoading)
         }
-        .padding(.horizontal, 12)
+        .padding(.horizontal, 14)
         .padding(.vertical, 10)
     }
+
+    // MARK: - Content
 
     private var projectList: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 0) {
                 ForEach(appState.projects) { project in
-                    ProjectRow(project: project)
+                    ProjectSection(project: project)
                 }
             }
         }
-        .frame(maxHeight: 400)
+        .frame(maxHeight: 450)
     }
 
     private var loadingView: some View {
@@ -62,7 +87,7 @@ struct MenubarView: View {
             Spacer()
             ProgressView()
                 .controlSize(.small)
-            Text("Scanning...")
+            Text("Scanning repositories...")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Spacer()
@@ -74,7 +99,7 @@ struct MenubarView: View {
         VStack(spacing: 6) {
             Image(systemName: "tray")
                 .font(.title2)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.tertiary)
             Text("No commits found")
                 .font(.caption)
                 .foregroundStyle(.secondary)
@@ -83,21 +108,24 @@ struct MenubarView: View {
         .frame(height: 80)
     }
 
+    // MARK: - Footer
+
     private var footer: some View {
         HStack {
             Button {
                 appState.refresh()
             } label: {
                 Image(systemName: "arrow.clockwise")
+                    .rotationEffect(.degrees(appState.isLoading ? 360 : 0))
+                    .animation(
+                        appState.isLoading
+                            ? .linear(duration: 0.8).repeatForever(autoreverses: false)
+                            : .default,
+                        value: appState.isLoading
+                    )
             }
             .buttonStyle(.borderless)
             .disabled(appState.isLoading)
-
-            Spacer()
-
-            Text("\(appState.totalCommits) commits")
-                .font(.caption)
-                .foregroundStyle(.secondary)
 
             Spacer()
 
@@ -113,28 +141,7 @@ struct MenubarView: View {
             }
             .buttonStyle(.borderless)
         }
-        .padding(.horizontal, 12)
+        .padding(.horizontal, 14)
         .padding(.vertical, 8)
-    }
-}
-
-struct PeriodPicker: View {
-    @Binding var selection: String
-
-    private let options = [
-        ("today", "Today"),
-        ("yesterday", "Yesterday"),
-        ("week", "Week"),
-        ("7d", "7 days"),
-    ]
-
-    var body: some View {
-        Picker("", selection: $selection) {
-            ForEach(options, id: \.0) { value, label in
-                Text(label).tag(value)
-            }
-        }
-        .pickerStyle(.menu)
-        .frame(width: 100)
     }
 }
