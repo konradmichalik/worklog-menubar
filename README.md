@@ -17,14 +17,34 @@ Scans a directory tree for git repos in parallel via the same Rust core, and ren
 > [!NOTE]
 > Requires `git` on `$PATH`. Author defaults to `git config --global user.name`.
 
-## Requirements
+## Installation
+
+### Homebrew (macOS)
+
+```bash
+brew install --cask konradmichalik/tap/worklog-app
+```
+
+To update to the latest version:
+
+```bash
+brew upgrade --cask konradmichalik/tap/worklog-app
+```
+
+### Download
+
+Grab the latest `.dmg` from [Releases](https://github.com/konradmichalik/worklog-menubar/releases), open it, and drag the app to Applications.
+
+## Building from Source
+
+### Requirements
 
 - macOS 14.0+
 - Xcode 16+
 - Rust toolchain (`rustup`)
 - [XcodeGen](https://github.com/yonaskolb/xcodegen) — `brew install xcodegen`
 
-## Build
+### Build
 
 ```bash
 # Build Rust FFI + generate Xcode project + build macOS app
