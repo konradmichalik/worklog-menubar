@@ -13,7 +13,7 @@ xcode: header
 
 # Build the macOS app via xcodebuild
 build: xcode
-	xcodebuild -project WorklogMenubar.xcodeproj -scheme WorklogMenubar -configuration Release build
+	xcodebuild -project WorklogApp.xcodeproj -scheme WorklogApp -configuration Release build
 
 clean:
 	cd worklog-ffi && cargo clean
