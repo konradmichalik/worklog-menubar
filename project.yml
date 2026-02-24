@@ -1,0 +1,31 @@
+name: WorklogMenubar
+options:
+  bundleIdPrefix: com.konradmichalik
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "16.0"
+
+targets:
+  WorklogMenubar:
+    type: application
+    platform: macOS
+    sources:
+      - WorklogMenubar
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.konradmichalik.worklog-menubar
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "6.0"
+        INFOPLIST_FILE: WorklogMenubar/Info.plist
+        CODE_SIGN_ENTITLEMENTS: WorklogMenubar/WorklogMenubar.entitlements
+        LIBRARY_SEARCH_PATHS: "$(PROJECT_DIR)/worklog-ffi/target/release"
+        HEADER_SEARCH_PATHS: "$(PROJECT_DIR)/WorklogMenubar/Bridge"
+        OTHER_LDFLAGS: "-lworklog_ffi"
+        SWIFT_OBJC_BRIDGING_HEADER: "WorklogMenubar/Bridge/worklog.h"
+    preBuildScripts:
+      - name: Build Rust FFI
+        script: |
+          cd "$PROJECT_DIR/worklog-ffi"
+          cargo build --release 2>&1
+        basedOnDependencyAnalysis: false

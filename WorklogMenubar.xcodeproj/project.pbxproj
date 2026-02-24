@@ -1,0 +1,373 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		261734C0C267EAEA10A2436C /* WorklogBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A095B04D73C40DF9CCCB21 /* WorklogBridge.swift */; };
+		2AE420BED78895790A3EFC36 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC151F994DAB4C1C74C96D1 /* AppState.swift */; };
+		3DC76307D2797FE55BBD5C70 /* ProjectRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF40F9C01510EB080280FA66 /* ProjectRow.swift */; };
+		4A74356603B8C33CC72A87A2 /* MenubarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F659855052D2D311C9F07F4 /* MenubarView.swift */; };
+		59F022A1BEC8B3B99AF65886 /* CommitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F60EDCC24EFE4C575707283 /* CommitRow.swift */; };
+		6A2A36A96F5CF96F59FFBF52 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11575BAD01A2830730BC2028 /* SettingsView.swift */; };
+		EED10EDB08AD0FC050A88D9E /* WorklogMenubarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A7C5C72A7FDF47D997E43C /* WorklogMenubarApp.swift */; };
+		FFAAA31B6A9E97CADF98888F /* WorklogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F7E208858741555B177E8C /* WorklogData.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		11575BAD01A2830730BC2028 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2898186C13C60F321E670EE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2F60EDCC24EFE4C575707283 /* CommitRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitRow.swift; sourceTree = "<group>"; };
+		4BC151F994DAB4C1C74C96D1 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		5F659855052D2D311C9F07F4 /* MenubarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarView.swift; sourceTree = "<group>"; };
+		99A7C5C72A7FDF47D997E43C /* WorklogMenubarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogMenubarApp.swift; sourceTree = "<group>"; };
+		B1A095B04D73C40DF9CCCB21 /* WorklogBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogBridge.swift; sourceTree = "<group>"; };
+		B1F7E208858741555B177E8C /* WorklogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogData.swift; sourceTree = "<group>"; };
+		B202B3DDE519472959EC4027 /* worklog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = worklog.h; sourceTree = "<group>"; };
+		C58C8361BEA41D9752FC7ACD /* WorklogMenubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorklogMenubar.entitlements; sourceTree = "<group>"; };
+		CF40F9C01510EB080280FA66 /* ProjectRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRow.swift; sourceTree = "<group>"; };
+		DF8941EA066B998179BD2874 /* WorklogMenubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorklogMenubar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		24959187AF21BD3B3B1714DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2F60EDCC24EFE4C575707283 /* CommitRow.swift */,
+				5F659855052D2D311C9F07F4 /* MenubarView.swift */,
+				CF40F9C01510EB080280FA66 /* ProjectRow.swift */,
+				11575BAD01A2830730BC2028 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		982C43A36D4FF1ADF86C5AC5 /* WorklogMenubar */ = {
+			isa = PBXGroup;
+			children = (
+				2898186C13C60F321E670EE5 /* Info.plist */,
+				C58C8361BEA41D9752FC7ACD /* WorklogMenubar.entitlements */,
+				99A7C5C72A7FDF47D997E43C /* WorklogMenubarApp.swift */,
+				EFF4B98079F71E66912DFD90 /* Bridge */,
+				E99E11596A84E46478E9B245 /* Models */,
+				24959187AF21BD3B3B1714DE /* Views */,
+			);
+			path = WorklogMenubar;
+			sourceTree = "<group>";
+		};
+		9DAB156E1F1FD608B79DBB3D = {
+			isa = PBXGroup;
+			children = (
+				982C43A36D4FF1ADF86C5AC5 /* WorklogMenubar */,
+				BFBB93521DEFB9D335BF3AF0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BFBB93521DEFB9D335BF3AF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DF8941EA066B998179BD2874 /* WorklogMenubar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E99E11596A84E46478E9B245 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4BC151F994DAB4C1C74C96D1 /* AppState.swift */,
+				B1F7E208858741555B177E8C /* WorklogData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EFF4B98079F71E66912DFD90 /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				B202B3DDE519472959EC4027 /* worklog.h */,
+				B1A095B04D73C40DF9CCCB21 /* WorklogBridge.swift */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FED806020EFA39805A5CF23 /* WorklogMenubar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C121316E09FA590432F6DD7 /* Build configuration list for PBXNativeTarget "WorklogMenubar" */;
+			buildPhases = (
+				4B91ADA1C2CAEB7F32944C91 /* Build Rust FFI */,
+				9A1BFC9714F228A2D67179E8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WorklogMenubar;
+			packageProductDependencies = (
+			);
+			productName = WorklogMenubar;
+			productReference = DF8941EA066B998179BD2874 /* WorklogMenubar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6B7AE62A0F023A27704E67BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = A57F2DA71AE1555588A2F0CD /* Build configuration list for PBXProject "WorklogMenubar" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 9DAB156E1F1FD608B79DBB3D;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FED806020EFA39805A5CF23 /* WorklogMenubar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B91ADA1C2CAEB7F32944C91 /* Build Rust FFI */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Rust FFI";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$PROJECT_DIR/worklog-ffi\"\ncargo build --release 2>&1\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A1BFC9714F228A2D67179E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AE420BED78895790A3EFC36 /* AppState.swift in Sources */,
+				59F022A1BEC8B3B99AF65886 /* CommitRow.swift in Sources */,
+				4A74356603B8C33CC72A87A2 /* MenubarView.swift in Sources */,
+				3DC76307D2797FE55BBD5C70 /* ProjectRow.swift in Sources */,
+				6A2A36A96F5CF96F59FFBF52 /* SettingsView.swift in Sources */,
+				261734C0C267EAEA10A2436C /* WorklogBridge.swift in Sources */,
+				FFAAA31B6A9E97CADF98888F /* WorklogData.swift in Sources */,
+				EED10EDB08AD0FC050A88D9E /* WorklogMenubarApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		06CDB61F6A51EFD5D1E3B15A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WorklogMenubar/WorklogMenubar.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/WorklogMenubar/Bridge";
+				INFOPLIST_FILE = WorklogMenubar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/worklog-ffi/target/release";
+				MARKETING_VERSION = 0.1.0;
+				OTHER_LDFLAGS = "-lworklog_ffi";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.konradmichalik.worklog-menubar";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = WorklogMenubar/Bridge/worklog.h;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		2060BE84C28AB3ED41DA35DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WorklogMenubar/WorklogMenubar.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/WorklogMenubar/Bridge";
+				INFOPLIST_FILE = WorklogMenubar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/worklog-ffi/target/release";
+				MARKETING_VERSION = 0.1.0;
+				OTHER_LDFLAGS = "-lworklog_ffi";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.konradmichalik.worklog-menubar";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = WorklogMenubar/Bridge/worklog.h;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		6601112FEE40DE6A699EAEEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		86E31C91757F27A76290241F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7C121316E09FA590432F6DD7 /* Build configuration list for PBXNativeTarget "WorklogMenubar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2060BE84C28AB3ED41DA35DE /* Debug */,
+				06CDB61F6A51EFD5D1E3B15A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A57F2DA71AE1555588A2F0CD /* Build configuration list for PBXProject "WorklogMenubar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86E31C91757F27A76290241F /* Debug */,
+				6601112FEE40DE6A699EAEEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6B7AE62A0F023A27704E67BA /* Project object */;
+}

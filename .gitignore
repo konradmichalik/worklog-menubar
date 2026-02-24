@@ -1,0 +1,18 @@
+# Rust
+target/
+worklog-ffi/target/
+
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# macOS
+.DS_Store
+
+# Generated
+WorklogMenubar/Bridge/worklog.h
