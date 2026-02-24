@@ -12,6 +12,7 @@
 		1C4A357FB4737CF09A11813E /* ProjectSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE773EE40C6DE8AAC59C8136 /* ProjectSection.swift */; };
 		3E618BD837E24BC619D2108D /* MenubarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E18703B0EDF6A64B2D294C /* MenubarView.swift */; };
 		590EE930B2E5FF18CCF33BBB /* GitIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19307BA16805F620C89059 /* GitIcon.swift */; };
+		71F772A5D29812C1228B04B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED1DE78FF3F66C3AE05F5576 /* Assets.xcassets */; };
 		7A9D40EDF7C6967CADA5E9DC /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41B3237EF829E69D0440C0 /* AppState.swift */; };
 		C78CBDE1516469CDA7CBE896 /* WorklogMenubarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346FA087A721539596228889 /* WorklogMenubarApp.swift */; };
 		EC7B4D755C53A0993E5EB5CE /* WorklogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48990FD33BED940AAD063308 /* WorklogData.swift */; };
@@ -28,6 +29,7 @@
 		B3502D8BC6A3CDC5F3BD0AA7 /* WorklogMenubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorklogMenubar.entitlements; sourceTree = "<group>"; };
 		C272DB1D64C23EF77E3C7CAC /* worklog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = worklog.h; sourceTree = "<group>"; };
 		DE773EE40C6DE8AAC59C8136 /* ProjectSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSection.swift; sourceTree = "<group>"; };
+		ED1DE78FF3F66C3AE05F5576 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFC0B65A3CB16EF562F19A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F716F5BBA711BA7E38C1E662 /* WorklogApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorklogApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,6 +74,7 @@
 		81B28DF2D25B4E358271AB6B /* WorklogMenubar */ = {
 			isa = PBXGroup;
 			children = (
+				ED1DE78FF3F66C3AE05F5576 /* Assets.xcassets */,
 				3D19307BA16805F620C89059 /* GitIcon.swift */,
 				EFC0B65A3CB16EF562F19A07 /* Info.plist */,
 				B3502D8BC6A3CDC5F3BD0AA7 /* WorklogMenubar.entitlements */,
@@ -100,6 +103,7 @@
 			buildPhases = (
 				3EDF731482E4647A4583588B /* Build Rust FFI */,
 				E9C61A02DDCEDE690AD9096C /* Sources */,
+				0AD685A008671864E26F65B5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -139,6 +143,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0AD685A008671864E26F65B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71F772A5D29812C1228B04B3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		3EDF731482E4647A4583588B /* Build Rust FFI */ = {
