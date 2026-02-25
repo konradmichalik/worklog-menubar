@@ -13,6 +13,7 @@ final class AppState: ObservableObject {
     @AppStorage("period") var period = "today"
     @AppStorage("refreshInterval") var refreshInterval: TimeInterval = 900 // 15 min
     @AppStorage("menubarBadge") var menubarBadge = "none"
+    @AppStorage("coloredCommitTypes") var coloredCommitTypes = true
 
     private var timer: AnyCancellable?
 

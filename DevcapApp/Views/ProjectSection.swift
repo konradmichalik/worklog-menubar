@@ -33,6 +33,8 @@ struct ProjectSection: View {
                 Image(systemName: "folder.fill")
                     .foregroundStyle(.secondary)
             }
+            .contentShape(Rectangle())
+            .onTapGesture { isExpanded.toggle() }
         }
     }
 }
@@ -71,6 +73,8 @@ private struct BranchSection: View {
             }
             .foregroundStyle(.secondary)
             .font(.subheadline)
+            .contentShape(Rectangle())
+            .onTapGesture { isExpanded.toggle() }
         }
         .id("\(idPrefix)/\(branch.name)")
     }
@@ -80,18 +84,21 @@ private struct BranchSection: View {
 
 private struct CommitRow: View {
     let commit: Commit
+    @AppStorage("coloredCommitTypes") private var coloredCommitTypes = true
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 6) {
             if let type = commit.commitType {
                 Text(type)
                     .font(.system(.caption2, design: .monospaced, weight: .medium))
-                    .foregroundStyle(colorForType(type))
+                    .foregroundStyle(coloredCommitTypes ? colorForType(type) : .secondary)
             }
 
             Text(commit.displayMessage)
                 .font(.callout)
-                .lineLimit(2)
+                .lineLimit(1)
+                .truncationMode(.tail)
+                .help(commit.message)
 
             Spacer()
 

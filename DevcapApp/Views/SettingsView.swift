@@ -42,9 +42,13 @@ struct SettingsView: View {
                     Text("Commits").tag("commits")
                 }
             }
+
+            Section("Appearance") {
+                Toggle("Colored commit types", isOn: $appState.coloredCommitTypes)
+            }
         }
         .formStyle(.grouped)
-        .frame(width: 400, height: 260)
+        .frame(width: 400, height: 300)
     }
 
     private func selectFolder() {
