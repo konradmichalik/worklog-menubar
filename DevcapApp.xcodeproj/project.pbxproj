@@ -25,6 +25,7 @@
 		28DF5743D5BF008ABB639727 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4D5CFA946A232A2F166D02FB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		75F9B69E4866D1C931A44463 /* DevcapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevcapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93DD08CAA17D00D4A6B51310 /* devcap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = devcap.h; sourceTree = "<group>"; };
 		A31C4087C8258A03308770D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BECF073274FA80933B0CE525 /* DevcapBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevcapBridge.swift; sourceTree = "<group>"; };
 		D0FFA6D1F6639946C3A3D935 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		21F5490D56C8CF42D9BA2310 /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
+				93DD08CAA17D00D4A6B51310 /* devcap.h */,
 				BECF073274FA80933B0CE525 /* DevcapBridge.swift */,
 			);
 			path = Bridge;

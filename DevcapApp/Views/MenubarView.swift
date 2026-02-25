@@ -3,6 +3,7 @@ import SwiftUI
 struct MenubarView: View {
     @EnvironmentObject var appState: AppState
     @Environment(\.openSettings) private var openSettings
+    @State private var visibleProjectIDs: Set<String> = []
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -73,15 +74,31 @@ struct MenubarView: View {
     // MARK: - Content
 
     private var projectList: some View {
-        List {
-            ForEach(appState.projects) { project in
-                ProjectSection(project: project, expanded: appState.allExpanded)
-                    .listRowSeparator(.hidden)
+        ScrollViewReader { proxy in
+            HStack(spacing: 0) {
+                List {
+                    ForEach(appState.projects) { project in
+                        ProjectSection(project: project, expanded: appState.allExpanded)
+                            .listRowSeparator(.hidden)
+                            .onAppear { visibleProjectIDs.insert(project.id) }
+                            .onDisappear { visibleProjectIDs.remove(project.id) }
+                    }
+                }
+                .listStyle(.inset)
+                .scrollIndicators(.never)
+                .id(appState.expansionID)
+
+                if appState.projects.count > 1 {
+                    ProjectScrollIndicator(
+                        projects: appState.projects,
+                        visibleIDs: visibleProjectIDs,
+                        onJump: { id in
+                            withAnimation { proxy.scrollTo(id, anchor: .top) }
+                        }
+                    )
+                }
             }
         }
-        .listStyle(.inset)
-        .scrollIndicators(.never)
-        .id(appState.expansionID)
         .frame(maxHeight: 450)
     }
 
@@ -158,5 +175,39 @@ struct MenubarView: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 8)
+    }
+}
+
+// MARK: - Project Scroll Indicator
+
+private struct ProjectScrollIndicator: View {
+    let projects: [ProjectLog]
+    let visibleIDs: Set<String>
+    let onJump: (String) -> Void
+
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(.quaternary.opacity(0.5))
+                .frame(width: 1)
+
+            VStack(spacing: 0) {
+                ForEach(projects) { project in
+                    Button {
+                        onJump(project.id)
+                    } label: {
+                        Circle()
+                            .fill(visibleIDs.contains(project.id) ? AnyShapeStyle(.secondary) : AnyShapeStyle(.quaternary))
+                            .frame(width: visibleIDs.contains(project.id) ? 6 : 4,
+                                   height: visibleIDs.contains(project.id) ? 6 : 4)
+                            .frame(maxHeight: .infinity)
+                    }
+                    .buttonStyle(.plain)
+                    .help(project.project)
+                }
+            }
+        }
+        .frame(width: 14)
+        .padding(.vertical, 4)
     }
 }
