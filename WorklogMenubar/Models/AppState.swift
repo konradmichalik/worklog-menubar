@@ -6,15 +6,21 @@ final class AppState: ObservableObject {
     @Published var projects: [ProjectLog] = []
     @Published var isLoading = false
     @Published var lastRefresh: Date?
+    @Published var allExpanded = true
+    @Published var expansionID = UUID()
 
     @AppStorage("scanPath") var scanPath = ""
     @AppStorage("period") var period = "today"
     @AppStorage("refreshInterval") var refreshInterval: TimeInterval = 900 // 15 min
-
     private var timer: AnyCancellable?
 
     var totalCommits: Int {
         projects.reduce(0) { $0 + $1.totalCommits }
+    }
+
+    func toggleExpansion() {
+        allExpanded.toggle()
+        expansionID = UUID()
     }
 
     init() {

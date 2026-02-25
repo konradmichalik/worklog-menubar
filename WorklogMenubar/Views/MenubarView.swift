@@ -73,13 +73,15 @@ struct MenubarView: View {
     // MARK: - Content
 
     private var projectList: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 0) {
-                ForEach(appState.projects) { project in
-                    ProjectSection(project: project)
-                }
+        List {
+            ForEach(appState.projects) { project in
+                ProjectSection(project: project, expanded: appState.allExpanded)
+                    .listRowSeparator(.hidden)
             }
         }
+        .listStyle(.inset)
+        .scrollIndicators(.never)
+        .id(appState.expansionID)
         .frame(maxHeight: 450)
     }
 
@@ -127,6 +129,16 @@ struct MenubarView: View {
             }
             .buttonStyle(.borderless)
             .disabled(appState.isLoading)
+
+            Button {
+                appState.toggleExpansion()
+            } label: {
+                Image(systemName: appState.allExpanded
+                    ? "rectangle.compress.vertical"
+                    : "rectangle.expand.vertical")
+            }
+            .buttonStyle(.borderless)
+            .help(appState.allExpanded ? "Collapse All" : "Expand All")
 
             Spacer()
 

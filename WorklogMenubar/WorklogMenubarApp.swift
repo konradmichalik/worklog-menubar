@@ -9,7 +9,7 @@ struct WorklogMenubarApp: App {
             MenubarView()
                 .environmentObject(appState)
         } label: {
-            Image(nsImage: GitIcon.menubarImage())
+            Image("MenubarIcon")
         }
         .menuBarExtraStyle(.window)
 

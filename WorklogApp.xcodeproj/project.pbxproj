@@ -11,7 +11,6 @@
 		139144889D732DB69356296B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AB8FDD3F31A4CC87619A75 /* SettingsView.swift */; };
 		1C4A357FB4737CF09A11813E /* ProjectSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE773EE40C6DE8AAC59C8136 /* ProjectSection.swift */; };
 		3E618BD837E24BC619D2108D /* MenubarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E18703B0EDF6A64B2D294C /* MenubarView.swift */; };
-		590EE930B2E5FF18CCF33BBB /* GitIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19307BA16805F620C89059 /* GitIcon.swift */; };
 		71F772A5D29812C1228B04B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED1DE78FF3F66C3AE05F5576 /* Assets.xcassets */; };
 		7A9D40EDF7C6967CADA5E9DC /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A41B3237EF829E69D0440C0 /* AppState.swift */; };
 		C78CBDE1516469CDA7CBE896 /* WorklogMenubarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346FA087A721539596228889 /* WorklogMenubarApp.swift */; };
@@ -23,7 +22,6 @@
 		10AB8FDD3F31A4CC87619A75 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		346FA087A721539596228889 /* WorklogMenubarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogMenubarApp.swift; sourceTree = "<group>"; };
 		34E18703B0EDF6A64B2D294C /* MenubarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarView.swift; sourceTree = "<group>"; };
-		3D19307BA16805F620C89059 /* GitIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitIcon.swift; sourceTree = "<group>"; };
 		48990FD33BED940AAD063308 /* WorklogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogData.swift; sourceTree = "<group>"; };
 		798200D3CF513CB03A607995 /* WorklogBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogBridge.swift; sourceTree = "<group>"; };
 		B3502D8BC6A3CDC5F3BD0AA7 /* WorklogMenubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorklogMenubar.entitlements; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				ED1DE78FF3F66C3AE05F5576 /* Assets.xcassets */,
-				3D19307BA16805F620C89059 /* GitIcon.swift */,
 				EFC0B65A3CB16EF562F19A07 /* Info.plist */,
 				B3502D8BC6A3CDC5F3BD0AA7 /* WorklogMenubar.entitlements */,
 				346FA087A721539596228889 /* WorklogMenubarApp.swift */,
@@ -183,7 +180,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A9D40EDF7C6967CADA5E9DC /* AppState.swift in Sources */,
-				590EE930B2E5FF18CCF33BBB /* GitIcon.swift in Sources */,
 				3E618BD837E24BC619D2108D /* MenubarView.swift in Sources */,
 				1C4A357FB4737CF09A11813E /* ProjectSection.swift in Sources */,
 				139144889D732DB69356296B /* SettingsView.swift in Sources */,
