@@ -11,9 +11,7 @@
 
 Scans a directory tree for git repos in parallel via the same Rust core, and renders a collapsible `Project > Branch > Commits` tree directly in your menubar.
 
-<p align="center">
-  <img src="docs/images/screenshot.jpg" width="420" alt="devcap.app screenshot">
-</p>
+![screenshot.jpg](docs/images/screenshot.jpg)
 
 ## ✨ Features
 
