@@ -35,30 +35,30 @@ struct ProjectSection: View {
             }
             .contentShape(Rectangle())
             .onTapGesture { isExpanded.toggle() }
-        }
-        .contextMenu {
-            Button {
-                NSWorkspace.shared.open(URL(fileURLWithPath: project.path))
-            } label: {
-                Label("Open in Finder", systemImage: "folder")
-            }
-
-            Button {
-                let script = "tell application \"Terminal\" to do script \"cd \(project.path.replacing("\"", with: "\\\""))\""
-                if let appleScript = NSAppleScript(source: script) {
-                    appleScript.executeAndReturnError(nil)
+            .contextMenu {
+                Button {
+                    NSWorkspace.shared.open(URL(fileURLWithPath: project.path))
+                } label: {
+                    Label("Open in Finder", systemImage: "folder")
                 }
-            } label: {
-                Label("Open in Terminal", systemImage: "terminal")
-            }
 
-            Divider()
+                Button {
+                    let script = "tell application \"Terminal\" to do script \"cd \(project.path.replacing("\"", with: "\\\""))\""
+                    if let appleScript = NSAppleScript(source: script) {
+                        appleScript.executeAndReturnError(nil)
+                    }
+                } label: {
+                    Label("Open in Terminal", systemImage: "terminal")
+                }
 
-            Button {
-                NSPasteboard.general.clearContents()
-                NSPasteboard.general.setString(project.path, forType: .string)
-            } label: {
-                Label("Copy Path", systemImage: "doc.on.doc")
+                Divider()
+
+                Button {
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(project.path, forType: .string)
+                } label: {
+                    Label("Copy Path", systemImage: "doc.on.doc")
+                }
             }
         }
     }
@@ -100,16 +100,16 @@ private struct BranchSection: View {
             .font(.subheadline)
             .contentShape(Rectangle())
             .onTapGesture { isExpanded.toggle() }
-        }
-        .id("\(idPrefix)/\(branch.name)")
-        .contextMenu {
-            Button {
-                NSPasteboard.general.clearContents()
-                NSPasteboard.general.setString(branch.name, forType: .string)
-            } label: {
-                Label("Copy Branch Name", systemImage: "doc.on.doc")
+            .contextMenu {
+                Button {
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(branch.name, forType: .string)
+                } label: {
+                    Label("Copy Branch Name", systemImage: "doc.on.doc")
+                }
             }
         }
+        .id("\(idPrefix)/\(branch.name)")
     }
 }
 
