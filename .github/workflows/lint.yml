@@ -1,0 +1,45 @@
+name: Lint
+
+on:
+  push:
+
+jobs:
+  rust:
+    name: Rust (fmt + clippy)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: devcap-ffi
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        run: rustup toolchain install stable --profile minimal --component rustfmt clippy
+
+      - name: Cache cargo registry + build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            devcap-ffi/target
+          key: rust-lint-${{ hashFiles('devcap-ffi/Cargo.lock') }}
+          restore-keys: rust-lint-
+
+      - name: cargo fmt
+        run: cargo fmt --check
+
+      - name: cargo clippy
+        run: cargo clippy -- -D warnings
+
+  swift:
+    name: SwiftLint
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
+      - name: SwiftLint
+        run: swiftlint lint --strict --reporter github-actions-logging
