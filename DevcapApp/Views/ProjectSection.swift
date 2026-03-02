@@ -32,7 +32,10 @@ struct ProjectSection: View {
     }
 
     var body: some View {
-        DisclosureGroup(isExpanded: $isExpanded) {
+        DisclosureGroup(isExpanded: Binding(
+            get: { isExpanded },
+            set: { newValue in withAnimation(nil) { isExpanded = newValue } }
+        )) {
             ForEach(project.branches, id: \.name) { branch in
                 BranchSection(branch: branch, idPrefix: project.path, expanded: defaultExpanded)
             }
@@ -66,7 +69,7 @@ struct ProjectSection: View {
                 }
             }
             .contentShape(Rectangle())
-            .onTapGesture { isExpanded.toggle() }
+            .onTapGesture { withAnimation(nil) { isExpanded.toggle() } }
             .contextMenu {
                 Button {
                     NSWorkspace.shared.open(URL(fileURLWithPath: project.path))
@@ -112,16 +115,19 @@ struct ProjectSection: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 14, height: 14)
+                .foregroundStyle(Color.secondary)
         case "gitlab", "gitlab-self-hosted":
             Image("OriginGitLab")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 16, height: 16)
+                .frame(width: 18, height: 18)
+                .foregroundStyle(Color.secondary)
         case "bitbucket":
             Image("OriginBitbucket")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 14, height: 14)
+                .foregroundStyle(Color.secondary)
         default:
             Image(systemName: project.origin != nil ? "globe" : "folder.fill")
                 .foregroundStyle(.secondary)
@@ -154,7 +160,10 @@ private struct BranchSection: View {
     }
 
     var body: some View {
-        DisclosureGroup(isExpanded: $isExpanded) {
+        DisclosureGroup(isExpanded: Binding(
+            get: { isExpanded },
+            set: { newValue in withAnimation(nil) { isExpanded = newValue } }
+        )) {
             ForEach(branch.commits, id: \.hash) { commit in
                 CommitRow(commit: commit)
                     .id("\(idPrefix)/\(branch.name)/\(commit.hash)")
@@ -178,7 +187,7 @@ private struct BranchSection: View {
             .foregroundStyle(.secondary)
             .font(.subheadline)
             .contentShape(Rectangle())
-            .onTapGesture { isExpanded.toggle() }
+            .onTapGesture { withAnimation(nil) { isExpanded.toggle() } }
             .contextMenu {
                 if let urlString = branch.url,
                    let url = URL(string: urlString) {
