@@ -16,3 +16,4 @@ build/
 
 # Generated
 DevcapApp/Bridge/devcap.h
+/DevcapApp.xcodeproj/project.xcworkspace/xcuserdata/
