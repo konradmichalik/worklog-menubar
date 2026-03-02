@@ -137,7 +137,6 @@ struct ProjectSection: View {
         default: origin
         }
     }
-
 }
 
 // MARK: - Branch
