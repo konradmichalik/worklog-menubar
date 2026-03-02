@@ -115,16 +115,19 @@ struct ProjectSection: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 14, height: 14)
+                .foregroundStyle(Color.secondary)
         case "gitlab", "gitlab-self-hosted":
             Image("OriginGitLab")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 16, height: 16)
+                .frame(width: 18, height: 18)
+                .foregroundStyle(Color.secondary)
         case "bitbucket":
             Image("OriginBitbucket")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 14, height: 14)
+                .foregroundStyle(Color.secondary)
         default:
             Image(systemName: project.origin != nil ? "globe" : "folder.fill")
                 .foregroundStyle(.secondary)
