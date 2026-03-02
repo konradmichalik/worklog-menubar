@@ -112,6 +112,43 @@ cd devcap-ffi && cargo tree -p devcap-core
 # 3. FFI layer (lib.rs) usually needs no changes — JSON passthrough
 ```
 
+## Linting
+
+All linters run in CI on every push (`.github/workflows/lint.yml`).
+
+### Run all linters
+
+```bash
+make lint
+```
+
+### Rust (fmt + clippy)
+
+```bash
+make lint-rust
+```
+
+- **`cargo fmt --check`** — enforces consistent formatting (run `cargo fmt` to auto-fix)
+- **`cargo clippy`** — static analysis with strict lints configured in `Cargo.toml`:
+  - `unwrap_used = "deny"`, `todo = "deny"`
+  - `expect_used = "warn"`, `dbg_macro = "warn"`
+
+### Swift (SwiftLint)
+
+```bash
+make lint-swift
+```
+
+Configuration: `.swiftlint.yml` in the project root.
+
+Install SwiftLint: `brew install swiftlint`
+
+Key rules:
+- `force_unwrapping` — opt-in, matches Rust's strict unwrap policy
+- `file_length` — warning at 400 lines, error at 800
+- `function_body_length` — warning at 50 lines, error at 80
+- `line_length` — warning at 150 characters
+
 ## Key design decisions
 
 - **LSUIElement** — app has no Dock icon, menubar-only via `MenuBarExtra`

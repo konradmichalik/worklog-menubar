@@ -1,6 +1,5 @@
 fn main() {
-    let crate_dir = std::env::var("CARGO_MANIFEST_DIR")
-        .unwrap_or_else(|_| ".".to_string());
+    let crate_dir = std::env::var("CARGO_MANIFEST_DIR").unwrap_or_else(|_| ".".to_string());
 
     if let Ok(bindings) = cbindgen::generate(&crate_dir) {
         let out_dir = std::path::Path::new(&crate_dir)

@@ -1,4 +1,4 @@
-.PHONY: ffi header xcode build clean update-core
+.PHONY: ffi header xcode build clean update-core lint lint-rust lint-swift
 
 # Build Rust FFI static library
 ffi:
@@ -21,6 +21,22 @@ update-core:
 	@echo "Updated devcap-core to:"
 	@cd devcap-ffi && cargo tree -p devcap-core --depth 0
 	$(MAKE) ffi
+
+# Lint all code (Rust + Swift)
+lint: lint-rust lint-swift
+
+# Rust: format check + clippy
+lint-rust:
+	cd devcap-ffi && cargo fmt --check
+	cd devcap-ffi && cargo clippy -- -D warnings
+
+# Swift: SwiftLint (auto-detect Xcode for SourceKit)
+lint-swift:
+	@if [ -z "$$DEVELOPER_DIR" ] && [ -d /Applications/Xcode.app ]; then \
+		DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swiftlint lint --strict; \
+	else \
+		swiftlint lint --strict; \
+	fi
 
 clean:
 	cd devcap-ffi && cargo clean
