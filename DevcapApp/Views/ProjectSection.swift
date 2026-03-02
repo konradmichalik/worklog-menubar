@@ -1,5 +1,21 @@
 import SwiftUI
 
+// MARK: - Diff Stat View
+
+private struct DiffStatLabel: View {
+    let stat: DiffStat
+
+    var body: some View {
+        HStack(spacing: 3) {
+            Text("+\(stat.insertions)")
+                .foregroundStyle(.green)
+            Text("-\(stat.deletions)")
+                .foregroundStyle(.red)
+        }
+        .font(.system(.caption2, design: .monospaced))
+    }
+}
+
 // MARK: - Project
 
 struct ProjectSection: View {
@@ -7,6 +23,7 @@ struct ProjectSection: View {
     private let defaultExpanded: Bool
     @State private var isExpanded: Bool
     @AppStorage("showOriginIcons") private var showOriginIcons = true
+    @AppStorage("showDiffStats") private var showDiffStats = true
 
     init(project: ProjectLog, expanded: Bool = true) {
         self.project = project
@@ -32,6 +49,9 @@ struct ProjectSection: View {
                             .foregroundStyle(.tertiary)
                     }
                     Spacer()
+                    if showDiffStats, !isExpanded, let stat = project.diffStat {
+                        DiffStatLabel(stat: stat)
+                    }
                     Text("\(project.totalCommits)")
                         .foregroundStyle(.secondary)
                         .monospacedDigit()
@@ -126,6 +146,7 @@ private struct BranchSection: View {
     let branch: BranchLog
     let idPrefix: String
     @State private var isExpanded: Bool
+    @AppStorage("showDiffStats") private var showDiffStats = true
 
     init(branch: BranchLog, idPrefix: String, expanded: Bool = true) {
         self.branch = branch
@@ -144,6 +165,9 @@ private struct BranchSection: View {
                 HStack {
                     Text(branch.name)
                     Spacer()
+                    if showDiffStats, !isExpanded, let stat = branch.diffStat {
+                        DiffStatLabel(stat: stat)
+                    }
                     Text("\(branch.commits.count)")
                         .foregroundStyle(.tertiary)
                         .monospacedDigit()
@@ -157,6 +181,17 @@ private struct BranchSection: View {
             .contentShape(Rectangle())
             .onTapGesture { isExpanded.toggle() }
             .contextMenu {
+                if let urlString = branch.url,
+                   let url = URL(string: urlString) {
+                    Button {
+                        NSWorkspace.shared.open(url)
+                    } label: {
+                        Label("Open in Browser", systemImage: "globe")
+                    }
+
+                    Divider()
+                }
+
                 Button {
                     NSPasteboard.general.clearContents()
                     NSPasteboard.general.setString(branch.name, forType: .string)
@@ -174,6 +209,7 @@ private struct BranchSection: View {
 private struct CommitRow: View {
     let commit: Commit
     @AppStorage("coloredCommitTypes") private var coloredCommitTypes = true
+    @AppStorage("showDiffStats") private var showDiffStats = true
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 6) {
@@ -191,11 +227,26 @@ private struct CommitRow: View {
 
             Spacer()
 
+            if showDiffStats, let stat = commit.diffStat {
+                DiffStatLabel(stat: stat)
+            }
+
             Text(commit.relativeTime)
                 .font(.caption2)
                 .foregroundStyle(.tertiary)
         }
         .contextMenu {
+            if let urlString = commit.url,
+               let url = URL(string: urlString) {
+                Button {
+                    NSWorkspace.shared.open(url)
+                } label: {
+                    Label("Open in Browser", systemImage: "globe")
+                }
+
+                Divider()
+            }
+
             Button {
                 copyToClipboard(commit.hash)
             } label: {
