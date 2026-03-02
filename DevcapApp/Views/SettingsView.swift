@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var appState: AppState
+    @State private var selectedTab: SettingsTab = .general
 
     private let refreshOptions: [(String, TimeInterval)] = [
         ("Off", 0),
@@ -11,6 +12,32 @@ struct SettingsView: View {
     ]
 
     var body: some View {
+        VStack(spacing: 0) {
+            Picker("", selection: $selectedTab) {
+                ForEach(SettingsTab.allCases) { tab in
+                    Text(tab.title).tag(tab)
+                }
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
+            .padding(.horizontal, 60)
+            .padding(.top, 12)
+            .padding(.bottom, 4)
+
+            Group {
+                switch selectedTab {
+                case .general:
+                    generalTab
+                case .about:
+                    AboutView()
+                }
+            }
+            .frame(height: selectedTab == .general ? 450 : 300)
+        }
+        .frame(width: 400)
+    }
+
+    private var generalTab: some View {
         Form {
             Section("Scan Path") {
                 HStack {
@@ -48,7 +75,7 @@ struct SettingsView: View {
             }
         }
         .formStyle(.grouped)
-        .frame(width: 400)
+        .scrollDisabled(true)
     }
 
     private func selectFolder() {
@@ -60,6 +87,20 @@ struct SettingsView: View {
         if panel.runModal() == .OK, let url = panel.url {
             appState.scanPath = url.path
             appState.refresh()
+        }
+    }
+}
+
+private enum SettingsTab: String, CaseIterable, Identifiable {
+    case general
+    case about
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .general: "General"
+        case .about: "About"
         }
     }
 }
