@@ -2,8 +2,8 @@ use std::ffi::{CStr, CString};
 use std::os::raw::c_char;
 use std::path::Path;
 
-use rayon::prelude::*;
 use devcap_core::{discovery, git, model, period};
+use rayon::prelude::*;
 
 /// Scan repositories and return results as a JSON string.
 ///
