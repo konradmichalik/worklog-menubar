@@ -15,6 +15,7 @@ final class AppState: ObservableObject {
     @AppStorage("menubarBadge") var menubarBadge = "none"
     @AppStorage("coloredCommitTypes") var coloredCommitTypes = true
     @AppStorage("showOriginIcons") var showOriginIcons = true
+    @AppStorage("showDiffStats") var showDiffStats = true
 
     private var timer: AnyCancellable?
 

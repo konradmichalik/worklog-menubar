@@ -23,7 +23,7 @@ struct SettingsView: View {
                 }
             }
 
-            Section("Refresh") {
+            Section("General") {
                 Picker("Auto-refresh", selection: $appState.refreshInterval) {
                     ForEach(refreshOptions, id: \.1) { label, value in
                         Text(label).tag(value)
@@ -32,10 +32,8 @@ struct SettingsView: View {
                 .onChange(of: appState.refreshInterval) {
                     appState.startAutoRefresh()
                 }
-            }
 
-            Section("Menubar Icon") {
-                Picker("Show count", selection: $appState.menubarBadge) {
+                Picker("Menubar count", selection: $appState.menubarBadge) {
                     Text("None").tag("none")
                     Text("Projects").tag("projects")
                     Text("Branches").tag("branches")
@@ -46,6 +44,7 @@ struct SettingsView: View {
             Section("Appearance") {
                 Toggle("Colored commit types", isOn: $appState.coloredCommitTypes)
                 Toggle("Show provider icons", isOn: $appState.showOriginIcons)
+                Toggle("Show diff stats", isOn: $appState.showDiffStats)
             }
         }
         .formStyle(.grouped)

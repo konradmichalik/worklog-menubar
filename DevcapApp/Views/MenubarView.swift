@@ -167,6 +167,7 @@ struct MenubarView: View {
             Spacer()
 
             Button {
+                NSApplication.shared.activate(ignoringOtherApps: true)
                 openSettings()
             } label: {
                 Image(systemName: "gear")

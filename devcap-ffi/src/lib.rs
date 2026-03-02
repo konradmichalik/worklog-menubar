@@ -59,7 +59,7 @@ unsafe fn scan_inner(
 
     let mut projects: Vec<model::ProjectLog> = repos
         .par_iter()
-        .filter_map(|repo| git::collect_project_log(repo, &range, author.as_deref()))
+        .filter_map(|repo| git::collect_project_log(repo, &range, author.as_deref(), true))
         .collect();
 
     projects.sort_by(|a, b| {
