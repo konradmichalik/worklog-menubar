@@ -24,6 +24,7 @@ targets:
         HEADER_SEARCH_PATHS: "$(PROJECT_DIR)/DevcapApp/Bridge"
         OTHER_LDFLAGS: "-ldevcap_ffi"
         SWIFT_OBJC_BRIDGING_HEADER: "DevcapApp/Bridge/devcap.h"
+
     preBuildScripts:
       - name: Build Rust FFI
         script: |
