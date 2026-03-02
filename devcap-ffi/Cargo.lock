@@ -200,8 +200,8 @@ checksum = "d0a5c400df2834b80a4c3327b3aad3a4c4cd4de0629063962b03235697506a28"
 
 [[package]]
 name = "devcap-core"
-version = "0.4.0"
-source = "git+https://github.com/konradmichalik/devcap.git?tag=v0.4.0#bea647d8be4d39369b1d57d13407940cf025b183"
+version = "0.5.0"
+source = "git+https://github.com/konradmichalik/devcap.git?tag=v0.5.0#e1913175c324815f9d2eb4ce31c3a0838e26f268"
 dependencies = [
  "anyhow",
  "chrono",
