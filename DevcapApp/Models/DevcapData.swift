@@ -1,11 +1,24 @@
 import Foundation
 
+struct DiffStat: Codable {
+    let filesChanged: Int
+    let insertions: Int
+    let deletions: Int
+
+    enum CodingKeys: String, CodingKey {
+        case filesChanged = "files_changed"
+        case insertions, deletions
+    }
+}
+
 struct Commit: Codable, Identifiable {
     let hash: String
     let message: String
     let commitType: String?
     let timestamp: String
     let relativeTime: String
+    let url: String?
+    let diffStat: DiffStat?
 
     var id: String { hash }
 
@@ -17,20 +30,28 @@ struct Commit: Codable, Identifiable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case hash, message, timestamp
+        case hash, message, timestamp, url
         case commitType = "commit_type"
         case relativeTime = "relative_time"
+        case diffStat = "diff_stat"
     }
 }
 
 struct BranchLog: Codable, Identifiable {
     let name: String
+    let url: String?
     let commits: [Commit]
+    let diffStat: DiffStat?
 
     var id: String { name }
 
     var latestActivity: String? {
         commits.first?.relativeTime
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name, url, commits
+        case diffStat = "diff_stat"
     }
 }
 
@@ -40,10 +61,12 @@ struct ProjectLog: Codable, Identifiable {
     let origin: String?
     let remoteUrl: String?
     let branches: [BranchLog]
+    let diffStat: DiffStat?
 
     enum CodingKeys: String, CodingKey {
         case project, path, origin, branches
         case remoteUrl = "remote_url"
+        case diffStat = "diff_stat"
     }
 
     var id: String { path }
