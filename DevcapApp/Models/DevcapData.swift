@@ -85,4 +85,11 @@ struct ProjectLog: Codable, Identifiable {
             .first?
             .relativeTime
     }
+
+    var latestTimestamp: String? {
+        branches
+            .flatMap(\.commits)
+            .map(\.timestamp)
+            .max()
+    }
 }
