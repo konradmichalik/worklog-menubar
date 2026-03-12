@@ -17,6 +17,10 @@ final class AppState: ObservableObject {
     @AppStorage("showOriginIcons") var showOriginIcons = true
     @AppStorage("showDiffStats") var showDiffStats = true
 
+    /// Bridged from @Environment(\.openSettings) via MenubarView.onAppear,
+    /// because the AppDelegate has no access to SwiftUI scene environments.
+    var openSettingsAction: (() -> Void)?
+
     private var timer: AnyCancellable?
 
     var totalCommits: Int {

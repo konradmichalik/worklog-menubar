@@ -22,6 +22,9 @@ struct MenubarView: View {
             footer
         }
         .frame(width: 400)
+        .onAppear {
+            appState.openSettingsAction = { [openSettings] in openSettings() }
+        }
     }
 
     // MARK: - Header
