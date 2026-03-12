@@ -16,6 +16,7 @@ final class AppState: ObservableObject {
     @AppStorage("coloredCommitTypes") var coloredCommitTypes = true
     @AppStorage("showOriginIcons") var showOriginIcons = true
     @AppStorage("showDiffStats") var showDiffStats = true
+    @AppStorage("sortOrder") var sortOrder = "time"
 
     /// Bridged from @Environment(\.openSettings) via MenubarView.onAppear,
     /// because the AppDelegate has no access to SwiftUI scene environments.
@@ -63,10 +64,26 @@ final class AppState: ObservableObject {
         Task.detached { [scanPath, period] in
             let results = DevcapBridge.scan(path: scanPath, period: period, author: nil)
             await MainActor.run { [weak self] in
-                self?.projects = results
-                self?.isLoading = false
-                self?.lastRefresh = Date()
+                guard let self else { return }
+                self.projects = self.sorted(results)
+                self.isLoading = false
+                self.lastRefresh = Date()
             }
+        }
+    }
+
+    func applySort() {
+        projects = sorted(projects)
+    }
+
+    private func sorted(_ items: [ProjectLog]) -> [ProjectLog] {
+        switch sortOrder {
+        case "name":
+            return items.sorted { $0.project.localizedCaseInsensitiveCompare($1.project) == .orderedAscending }
+        case "commits":
+            return items.sorted { $0.totalCommits > $1.totalCommits }
+        default:
+            return items.sorted { ($0.latestTimestamp ?? "") > ($1.latestTimestamp ?? "") }
         }
     }
 

@@ -60,6 +60,15 @@ struct SettingsView: View {
                     appState.startAutoRefresh()
                 }
 
+                Picker("Sort projects by", selection: $appState.sortOrder) {
+                    Text("Latest activity").tag("time")
+                    Text("Name").tag("name")
+                    Text("Commit count").tag("commits")
+                }
+                .onChange(of: appState.sortOrder) {
+                    appState.applySort()
+                }
+
                 Picker("Menubar count", selection: $appState.menubarBadge) {
                     Text("None").tag("none")
                     Text("Projects").tag("projects")
