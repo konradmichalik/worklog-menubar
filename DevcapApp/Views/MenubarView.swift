@@ -109,7 +109,7 @@ struct MenubarView: View {
                 }
             }
         }
-        .frame(maxHeight: 450)
+        .frame(minHeight: 200, idealHeight: 500, maxHeight: 600)
     }
 
     private var loadingView: some View {
