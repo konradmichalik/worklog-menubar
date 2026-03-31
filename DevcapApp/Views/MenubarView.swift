@@ -1,9 +1,17 @@
 import SwiftUI
 
+private struct ContentHeightKey: PreferenceKey {
+    nonisolated(unsafe) static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = max(value, nextValue())
+    }
+}
+
 struct MenubarView: View {
     @EnvironmentObject var appState: AppState
     @Environment(\.openSettings) private var openSettings
     @State private var visibleProjectIDs: Set<String> = []
+    @State private var listContentHeight: CGFloat = 200
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -42,6 +50,7 @@ struct MenubarView: View {
                     Text("Last 7 Days").tag("7d")
                 }
                 .pickerStyle(.menu)
+                .controlSize(.small)
                 .frame(width: 110)
                 .onChange(of: appState.period) {
                     appState.refresh()
@@ -86,17 +95,30 @@ struct MenubarView: View {
     private var projectList: some View {
         ScrollViewReader { proxy in
             HStack(spacing: 0) {
-                List {
-                    ForEach(appState.projects) { project in
-                        ProjectSection(project: project, expanded: appState.allExpanded)
-                            .listRowSeparator(.hidden)
-                            .onAppear { visibleProjectIDs.insert(project.id) }
-                            .onDisappear { visibleProjectIDs.remove(project.id) }
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 6) {
+                        ForEach(appState.projects) { project in
+                            ProjectSection(project: project, expanded: appState.allExpanded)
+                                .onAppear { visibleProjectIDs.insert(project.id) }
+                                .onDisappear { visibleProjectIDs.remove(project.id) }
+                        }
                     }
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 14)
+                    .background(
+                        GeometryReader { geo in
+                            Color.clear.preference(
+                                key: ContentHeightKey.self,
+                                value: geo.size.height
+                            )
+                        }
+                    )
                 }
-                .listStyle(.inset)
                 .scrollIndicators(.never)
                 .id(appState.expansionID)
+                .onPreferenceChange(ContentHeightKey.self) { height in
+                    listContentHeight = min(max(height, 80), 400)
+                }
 
                 if appState.projects.count > 1 {
                     ProjectScrollIndicator(
@@ -109,7 +131,7 @@ struct MenubarView: View {
                 }
             }
         }
-        .frame(minHeight: 200, idealHeight: 500, maxHeight: 600)
+        .frame(height: listContentHeight)
     }
 
     private var loadingView: some View {
