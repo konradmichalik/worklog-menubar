@@ -38,6 +38,8 @@ struct ProjectSection: View {
         )) {
             ForEach(project.branches, id: \.name) { branch in
                 BranchSection(branch: branch, idPrefix: project.path, expanded: defaultExpanded)
+                    .padding(.leading, 20)
+                    .padding(.vertical, 3)
             }
         } label: {
             Label {
@@ -120,7 +122,7 @@ struct ProjectSection: View {
             Image("OriginGitLab")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 18, height: 18)
+                .frame(width: 14, height: 14)
                 .foregroundStyle(Color.secondary)
         case "bitbucket":
             Image("OriginBitbucket")
@@ -166,6 +168,8 @@ private struct BranchSection: View {
         )) {
             ForEach(branch.commits, id: \.hash) { commit in
                 CommitRow(commit: commit)
+                    .padding(.leading, 20)
+                    .padding(.vertical, 3)
                     .id("\(idPrefix)/\(branch.name)/\(commit.hash)")
             }
         } label: {
